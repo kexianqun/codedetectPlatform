@@ -1,13 +1,17 @@
 package xkq.utils;
 
+import com.google.gson.Gson;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Arrays;
 
 public class FlaskInterfaceTool {
 
-    public static String getResByUrl(String pathUrl){
-        OutputStreamWriter out = null;
+    public static String getResByUrl(String pathUrl,String method,Object object){
+        OutputStream out = null;
         BufferedReader br = null;
         String result = "";
         String data = "";
@@ -17,7 +21,7 @@ public class FlaskInterfaceTool {
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             //请求方式
-            conn.setRequestMethod("GET");
+            conn.setRequestMethod(method);
 
             //设置通用的请求属性
             conn.setRequestProperty("accept", "*/*");
@@ -33,9 +37,16 @@ public class FlaskInterfaceTool {
              * 下面的三句代码，就是调用第三方http接口
              */
             //获取URLConnection对象对应的输出流
-            out = new OutputStreamWriter(conn.getOutputStream(), "UTF-8");
+            out = conn.getOutputStream();
             //发送请求参数即数据
-            out.write(data);
+            if(method.equals("GET")){
+                out.write(data.getBytes());
+            }else{
+                Gson gson = new Gson();
+                String json = gson.toJson(object);
+                out.write(json.getBytes());
+            }
+
             //flush输出流的缓冲
             out.flush();
 

@@ -2,8 +2,10 @@ package xkq.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class CloneEntity {
+public class CloneEntity implements Serializable {
     private long id;
     private String uuid;
     private String text1;

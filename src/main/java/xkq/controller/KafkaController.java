@@ -1,5 +1,6 @@
 package xkq.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import xkq.entity.Book;
@@ -14,13 +15,9 @@ public class KafkaController {
     String myTopic;
     @Value("${kafka.topic.my-topic2}")
     String myTopic2;
-    private final BookProducerService producer;
+    @Autowired
+    private  BookProducerService producer;
     private AtomicLong atomicLong = new AtomicLong();
-
-    KafkaController(BookProducerService producer) {
-        this.producer = producer;
-    }
-
     @GetMapping("/test")
     public void sendMessageToKafkaTopic() {
         String name="java";

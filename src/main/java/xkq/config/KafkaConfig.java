@@ -7,18 +7,25 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class KafkaConfig {
-    @Value("${kafka.topic.my-topic}")
-    String myTopic;
-    @Value("${kafka.topic.my-topic2}")
-    String myTopic2;
+    @Value("${kafka.topic.clone}")
+    String clone;
+    @Value("${kafka.topic.cluster}")
+    String cluster;
+    @Value("${kafka.topic.bugdetect}")
+    String bugdetect;
 
     @Bean
-    public NewTopic mytopic(){
-        return new NewTopic(myTopic, 2, (short) 1);
+    public NewTopic clone(){
+        return new NewTopic(clone, 2, (short) 2);
     }
 
     @Bean
-    public NewTopic myTopic2() {
-        return new NewTopic(myTopic2, 1, (short) 1);
+    public NewTopic bugDetect() {
+        return new NewTopic(bugdetect, 2, (short) 2);
+    }
+
+    @Bean
+    public NewTopic cluster() {
+        return new NewTopic(cluster, 2, (short) 2);
     }
 }

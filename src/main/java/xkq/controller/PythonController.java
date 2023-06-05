@@ -11,7 +11,7 @@ public class PythonController {
     @GetMapping("/hello")
     public String hello() {
         String url="http://127.0.0.1:8081/api/test/12345678999";
-        return FlaskInterfaceTool.getResByUrl(url);
+        return FlaskInterfaceTool.getResByUrl(url,"GET", null);
 //        return "hello";
     }
 
@@ -20,7 +20,7 @@ public class PythonController {
         String [] tokens ={"contract","{","}"};
         String re = tokens.toString();
         String url="http://127.0.0.1:8081/embedding/solidity/"+re;
-        return FlaskInterfaceTool.getResByUrl(url);
+        return FlaskInterfaceTool.getResByUrl(url,"GET",null);
 //        return "hello";
     }
 }

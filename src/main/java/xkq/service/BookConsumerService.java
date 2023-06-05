@@ -2,12 +2,15 @@ package xkq.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.listener.MessageListener;
+import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
 import xkq.entity.Book;
 import xkq.entity.Mail;
@@ -35,11 +38,11 @@ public class BookConsumerService {
 
     @KafkaListener(topics = {"${kafka.topic.my-topic2}"}, groupId = "group2")
     public void consumeMessage2(String book) {
-        Mail mail = new Mail();
-        mail.setTo("qunxianke@163.com");
-        mail.setSubject("柯贤群测试发送");
-        mail.setContent(book);
-        emailService.sendMail(mail);
+//        Mail mail = new Mail();
+//        mail.setTo("qunxianke@163.com");
+//        mail.setSubject("柯贤群测试发送");
+//        mail.setContent(book);
+//        emailService.sendMail(mail);
         logger.info("消费者消费{}的消息 -> {}", myTopic2, book);
     }
 
