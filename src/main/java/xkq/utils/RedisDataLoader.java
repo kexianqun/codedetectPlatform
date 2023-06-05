@@ -24,6 +24,5 @@ public class RedisDataLoader implements CommandLineRunner {
             User user = userService.getUser("xqke", "123456");
             redisTemplate.opsForValue().set("user",user);
         }
-
     }
 }
