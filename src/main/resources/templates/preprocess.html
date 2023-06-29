@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row bg-light">
+        <div class="col-md-2">
+            <h4 class="text-success">[[${session.loginUser}]]</h4>
+        </div>
+        <div class="col-md-9">
+            <h2 class="h2 text-info text-center">欢迎来到软件漏洞检测平台</h2>
+        </div>
+        <div class="col-md-1">
+            <ul class="navbar-nav px-3">
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link text-danger" th:href="@{/user/logout}">注销</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a th:class="${active=='main.html'?'nav-link active':'nav-link'}" th:href="@{/main.html}">
+                        首页 <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:class="${active=='dataset.html'?'nav-link active':'nav-link'}" th:href="@{/dataset.html}">
+                        数据集 <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:class="${active=='preprocess.html'?'nav-link active':'nav-link'}"
+                       th:href="@{/preprocess.html}">
+                        数据预处理
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:class="${active=='detect.html.html'?'nav-link active':'nav-link'}" th:href="@{/detect.html}">
+                        漏洞检测
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        个人信息
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-4">
+                    <div style="height: 230px; width: 90%; background: #9fcdff">
+                        <a href="#">
+                            Tokenization标准化</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="height: 230px; width: 90%; background: #9fcdff">
+                        <a href="#">
+                            提取AST</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="height: 230px; width: 90%; background: #9fcdff">
+                        <a href="#">
+                            提取CFG</a>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div style="height: 230px; width: 90%; background: #9fcdff">
+                        <a href="#">
+                            提取PDG</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="height: 230px; width: 90%; background: #9fcdff">
+                        <a href="#">
+                            提取CPG</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="height: 230px; width: 90%; background: #9fcdff">
+                        <a href="#">
+                            提取CDG</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
