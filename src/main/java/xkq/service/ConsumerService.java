@@ -2,26 +2,22 @@ package xkq.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.listener.MessageListener;
-import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
 import xkq.entity.Book;
-import xkq.entity.Mail;
 
 @Service
-public class BookConsumerService {
+public class ConsumerService {
     @Value("${kafka.topic.my-topic}")
     private String myTopic;
     @Value("${kafka.topic.my-topic2}")
     private String myTopic2;
-    private final Logger logger = LoggerFactory.getLogger(BookProducerService.class);
+    private final Logger logger = LoggerFactory.getLogger(ProducerService.class);
     private final ObjectMapper objectMapper = new ObjectMapper();
     @Autowired
     private EmailService emailService;

@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 
 @Service
-public class BookProducerService {
-    private static final Logger logger = LoggerFactory.getLogger(BookProducerService.class);
+public class ProducerService {
+    private static final Logger logger = LoggerFactory.getLogger(ProducerService.class);
     private final KafkaTemplate<String, Object> kafkaTemplate;
 
     @Autowired
-    public BookProducerService(KafkaTemplate<String, Object> kafkaTemplate) {
+    public ProducerService(KafkaTemplate<String, Object> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 

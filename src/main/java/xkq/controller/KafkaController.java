@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import xkq.entity.Book;
-import xkq.service.BookProducerService;
+import xkq.service.ProducerService;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -16,7 +16,7 @@ public class KafkaController {
     @Value("${kafka.topic.my-topic2}")
     String myTopic2;
     @Autowired
-    private  BookProducerService producer;
+    private ProducerService producer;
     private AtomicLong atomicLong = new AtomicLong();
     @GetMapping("/test")
     public void sendMessageToKafkaTopic() {
